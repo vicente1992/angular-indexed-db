@@ -1,9 +1,30 @@
-<h1>Angular - stored data in indexdb</h1>
-<pre>{{peoples() | json}}</pre>
+<div class="container">
+  <h1>Gestión de Personas</h1>
 
-<ul>
-  @for (user of peoples(); track user.id) {
-  <li>{{ user.name }}</li>
-  } @empty {
-  <span>Empty list of users</span>
-  }
+  <!-- Botones para agregar personas -->
+  <div class="actions">
+    <button (click)="addPersonWithTap()">Agregar Persona (Tap)</button>
+  </div>
+
+  <!-- Lista de personas -->
+  <div class="people-list">
+    <h2>Personas registradas</h2>
+    <ul>
+      @for (user of peoples(); track user.id) {
+      <div class="user-item">
+        <span>{{ user.name }}</span>
+        <br>
+        <span>{{ user.email }}</span>
+
+        <div class="actions">
+          <button (click)="updatePerson(user)">Editar</button>
+          <button (click)="deletePerson(user?.id)">Eliminar</button>
+        </div>
+
+      </div>
+      } @empty {
+      <span>Empty list of users</span>
+      }
+    </ul>
+  </div>
+</div>
