@@ -1,0 +1,31 @@
+<div class="container">
+    <h1>Gestión de Personas</h1>
+
+    <!-- Botones para agregar personas -->
+    <div class="actions">
+        <button (click)="addPersonWithTap()">Agregar Persona (Tap)</button>
+        <button (click)="deleteAll()">Eliminar Personas</button>
+    </div>
+
+    <!-- Lista de personas -->
+    <div class="people-list">
+        <h2>Personas registradas</h2>
+        <ul>
+            @for (user of peoples(); track user.id) {
+            <div class="user-item">
+                <span>{{ user.name }}</span>
+                <br>
+                <span>{{ user.email }}</span>
+
+                <div class="actions">
+                    <button (click)="updatePerson(user)">Editar</button>
+                    <button (click)="deletePerson(user.id)">Eliminar</button>
+                </div>
+
+            </div>
+            } @empty {
+            <span>Empty list of users</span>
+            }
+        </ul>
+    </div>
+</div>
